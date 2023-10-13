@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import Dashboard from './pages/Dashboard';
+import Layout from './Layout';
+
 function App() {
   return (
-    <Dashboard></Dashboard>
+    <Layout/>
   );
 }
 
