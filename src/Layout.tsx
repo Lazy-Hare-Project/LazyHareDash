@@ -1,4 +1,6 @@
-import { Badge, Box, CssBaseline, Divider, IconButton, List, ThemeProvider, Toolbar, Typography, createTheme } from "@mui/material";
+import { Badge, Box, CssBaseline, Divider, 
+  IconButton, List, ThemeProvider, Toolbar, 
+  Typography, createTheme } from "@mui/material";
 import React from "react";
 import AppBar from "./components/AppBar";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -8,7 +10,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './components/listItems';
 import Dashboard from "./pages/Dashboard";
 import {Route, Routes} from 'react-router-dom';
-import Database from "./pages/Database";
+import Database from "./pages/UploadPage";
 import TableDetail from "./pages/TableDetail";
 import StickyFooter from "./components/StickyFooter";
 import Container from '@mui/material/Container';
@@ -98,7 +100,7 @@ setOpen(!open);
                     <Route path = '/' element = {<Dashboard />}/>
                     <Route path = '/database'>
                         <Route path = '' element = {<Database />}/>
-                        <Route path = ':table-name' element = {<TableDetail />} />
+                        <Route path = ':tableName' element = {<TableDetail />} />
                     </Route>
                     <Route path = '*' element = {<h1> Not Found!</h1>}/>
                 </Routes>

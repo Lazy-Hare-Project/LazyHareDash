@@ -9,12 +9,12 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { Link } from 'react-router-dom';
+import { Link } from '@mui/material';
 //This is the item on the Side Bar
 //TODO Create Routing for these Item
 export const mainListItems = (
   <React.Fragment>
-    <Link to = "/">
+    <Link className = "link_styles" href = "/" underline="none" color = 'ButtonText'>
     <ListItemButton>
       <ListItemIcon>
         <DashboardIcon />
@@ -22,7 +22,7 @@ export const mainListItems = (
       <ListItemText primary="Dashboard" />
     </ListItemButton>
     </Link>
-    <Link to = "/database">
+    <Link href = "/database" underline='none' color='ButtonText'>
     <ListItemButton>
       <ListItemIcon>
         <ShoppingCartIcon />

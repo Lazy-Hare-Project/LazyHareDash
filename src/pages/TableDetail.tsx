@@ -1,7 +1,10 @@
+import {useParams} from 'react-router-dom';
+
 export default function TableDetail() {
+    const{ tableName } = useParams();
     return(
         <div>
-            Table Detail
+            Table Detail Name: {tableName}
         </div>
     );
 }
