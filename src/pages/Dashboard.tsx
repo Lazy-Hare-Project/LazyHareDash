@@ -38,11 +38,12 @@ export default function Dashboard() {
               <Deposits />
             </Paper>
           </Grid>
-          {/* Recent Orders */}
+          {/* Recent Batch */}
           <Grid item xs={12}>
             <Paper sx={{ p: 2, 
               display: 'flex', 
               flexDirection: 'column' }}>
+              {/**TODO: rename to Recent Batch Report */}
               <Orders />
             </Paper>
           </Grid>

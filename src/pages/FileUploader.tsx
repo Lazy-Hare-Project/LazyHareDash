@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {
-    FormGroup,Grid,Paper,Alert,Button,Box,Input,Typography
-} from '@mui/material'
-import * as XLXS from 'xlsx';
-function Database(){
+    FormGroup,Grid,Paper,Alert,Button,Box,Input,Typography,
+} from '@mui/material';
+// import * as XLXS from 'xlsx';
+import { uploadFile } from '../aws-services/uploadFiletoS3';
+
+function FileUploader(){
     //onchange state:
-    const [excelFile, setExcelFile] = React.useState();
+    const [excelFile, setExcelFile] = React.useState<File|null>(null);
     const [typeError, setTypeError] = React.useState('');
-
+    const [fileName, setFileName] = React.useState('');
     //submit State:
-    const[excelData, setExcelData] = React.useState([{}]);
-
+    // const [excelData, setExcelData] = React.useState([{}]);
     //onchange event:
     const handleFile = (e:any) => {
         const fileType = [
@@ -24,37 +25,31 @@ function Database(){
                 let selectedFile = files[0];
                 if(selectedFile&&fileType.includes(selectedFile.type)){
                     setTypeError('');
-                    let reader = new FileReader();
-                    reader.readAsArrayBuffer(selectedFile);
-                    reader.onload = (e:any) => {
-                        if(e.target.result != null){
-                            setExcelFile(e.target.result);
-                        }
+                    setExcelFile(selectedFile);
+                    setFileName(selectedFile.name);
                     }
-                }
                 else{
                     setTypeError('Please select only excel file type');
                 }
-            }
+        }
         }catch(error){
             console.error("An Error Has Occurred: " + error);
         }
     }
-
-
     const handleOnSubmit = (e:any)  => 
     {
         e.preventDefault();
+
+        //read the excel file with XLXS an convert it to data object (Obtional)
         if(excelFile!= null){
-            const workbook = XLXS.read(excelFile,{type: 'buffer'});
-            const worksheetname = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[worksheetname];
-            const data:Object[] = XLXS.utils.sheet_to_json(worksheet);
-            setExcelData(data.slice(0,10))
-            console.log(excelData[0]);
+            uploadFile(excelFile,fileName);
+            // const workbook = XLXS.read(excelFile,{type: 'buffer'});
+            // const worksheetname = workbook.SheetNames[0];
+            // const worksheet = workbook.Sheets[worksheetname];
+            // const data:Object[] = XLXS.utils.sheet_to_json(worksheet);
+            // setExcelData(data);
         }
     }
-
     return(
     <Grid container spacing={1}>
         {/* Chart */}
@@ -63,8 +58,7 @@ function Database(){
             sx={{
               p: 2,
               display: 'flex',
-              flexDirection: 'column',
-              height: 240,
+              flexDirection: 'column'
             }}
           >
         <Typography
@@ -88,35 +82,20 @@ function Database(){
                     }}
                     variant='contained'
                     type = 'submit' 
-                    className = 'excel-submit'>Submit
+                    className = 'excel-submit'>Upload
                 </Button>
                 </Box>
                 {
-                    (typeError=='')?(<></>):
+                    (typeError==='')?(<></>):
                     (
                         <Alert severity='error'>{typeError}</Alert>
                     )
                 }
                 </FormGroup>
             </form>
-
-            {/* TODO: Create Table to View Data uploaded*/}
-            <Box className = 'excel-viewer'>
-            <Typography component = 'h6' variant='h6'
-            >Excel Viewer</Typography>
-                {excelData?(
-                    <Box className = "table-responsive">
-                        {/*TODO: Adding datagrid for the excelData. Link for references: 
-                        https://mui.com/x/react-data-grid/getting-started/*/}
-                    </Box>
-                ):(
-                    <Box> No File is uploaded yet!</Box>
-                )
-                }
-            </Box>
             </Paper>
         </Grid>
     </Grid>
     );
 }
-export default Database;
+export default FileUploader;

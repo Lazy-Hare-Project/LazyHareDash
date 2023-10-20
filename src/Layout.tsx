@@ -10,7 +10,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './components/listItems';
 import Dashboard from "./pages/Dashboard";
 import {Route, Routes} from 'react-router-dom';
-import Database from "./pages/UploadPage";
+import FileUploader from "./pages/FileUploader";
 import TableDetail from "./pages/TableDetail";
 import StickyFooter from "./components/StickyFooter";
 import Container from '@mui/material/Container';
@@ -99,7 +99,7 @@ setOpen(!open);
                 <Routes>
                     <Route path = '/' element = {<Dashboard />}/>
                     <Route path = '/database'>
-                        <Route path = '' element = {<Database />}/>
+                        <Route path = '' element = {<FileUploader />}/>
                         <Route path = ':tableName' element = {<TableDetail />} />
                     </Route>
                     <Route path = '*' element = {<h1> Not Found!</h1>}/>
