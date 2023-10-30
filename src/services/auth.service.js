@@ -1,6 +1,7 @@
 
 import { client } from "./client";
 import {LoginResponse} from '../entity/index.js'
+import { Navigate } from "react-router-dom";
 
 function checkedLoggedIn(){
     let token = localStorage.getItem("token");
@@ -25,6 +26,8 @@ function getToken(){
 
 function logout(){
     localStorage.removeItem("token");
+    window.location.reload();
+    console.log("you were logout")
 }
 /**
  * login function, sends POST request to server.

@@ -1,20 +1,17 @@
-import { Badge, Box, CssBaseline, Divider, 
+import { Box, CssBaseline, Divider, 
   IconButton, List, ThemeProvider, Toolbar, 
   Typography, createTheme } from "@mui/material";
 import React from "react";
 import AppBar from "./components/AppBar";
 import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import Drawer from "./components/Drawer";
+import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';import Drawer from "./components/Drawer";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './components/listItems';
 import Dashboard from "./pages/Dashboard";
-import {Route, Routes} from 'react-router-dom';
-import FileUploader from "./pages/FileUploader";
-import TableDetail from "./pages/TableDetail";
 import StickyFooter from "./components/StickyFooter";
 import Container from '@mui/material/Container';
-import SignInSide from "./pages/SignInSide";
+
+import { logout } from "./services/auth.service";
 
 export default function Layout() {
 const defaultTheme = createTheme();
@@ -31,6 +28,7 @@ setOpen(!open);
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
+              
             }}
           >
             <IconButton
@@ -54,11 +52,11 @@ setOpen(!open);
             >
               Aboho Sales Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <IconButton color="inherit" onClick={logout}>
+              <LogoutSharpIcon/>
+            </IconButton>      
+
+
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
