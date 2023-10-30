@@ -64,7 +64,7 @@ function FileUploader(){
         <Typography
         component='h3' 
         variant='h5'
-        > Upload and View Excel File</Typography>
+        > Upload and Excel File To S3</Typography>
             {/* TODO: replace this div with Container classes from MUI*/}
             <form className = 'excel-process-form' onSubmit = {handleOnSubmit}>
                 <FormGroup >

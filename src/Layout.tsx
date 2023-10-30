@@ -14,6 +14,7 @@ import FileUploader from "./pages/FileUploader";
 import TableDetail from "./pages/TableDetail";
 import StickyFooter from "./components/StickyFooter";
 import Container from '@mui/material/Container';
+import SignInSide from "./pages/SignInSide";
 
 export default function Layout() {
 const defaultTheme = createTheme();
@@ -96,14 +97,7 @@ setOpen(!open);
                 <Toolbar />
                 <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 {/*Router Here */}
-                <Routes>
-                    <Route path = '/' element = {<Dashboard />}/>
-                    <Route path = '/database'>
-                        <Route path = '' element = {<FileUploader />}/>
-                        <Route path = ':tableName' element = {<TableDetail />} />
-                    </Route>
-                    <Route path = '*' element = {<h1> Not Found!</h1>}/>
-                </Routes>
+                  <Dashboard/>
                 </Container>
                 <StickyFooter/>
             </Box>
