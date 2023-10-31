@@ -10,11 +10,13 @@ import { getToken } from './auth.service';
  */
 
 const client = axios.create({
-    baseURL: "http://localhost:8080/",
+    // baseURL: "http://localhost:8080/",
+    baseURL: "http://securewebapp-env.eba-rbtzvmrt.us-east-1.elasticbeanstalk.com/",
 });
 
 const secureClient = axios.create({
-    baseURL: "http://localhost:8080/",
+    // baseURL: "http://localhost:8080/",
+    baseURL: "http://securewebapp-env.eba-rbtzvmrt.us-east-1.elasticbeanstalk.com/",
 });
 /**
  * interceptors.request.use 
