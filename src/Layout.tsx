@@ -12,6 +12,7 @@ import StickyFooter from "./components/StickyFooter";
 import Container from '@mui/material/Container';
 
 import { logout } from "./services/auth.service";
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
 const defaultTheme = createTheme();
@@ -95,7 +96,7 @@ setOpen(!open);
                 <Toolbar />
                 <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 {/*Router Here */}
-                  <Dashboard/>
+                  <Outlet></Outlet>
                 </Container>
                 <StickyFooter/>
             </Box>
