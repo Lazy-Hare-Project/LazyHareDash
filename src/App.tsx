@@ -4,9 +4,9 @@ import Layout from './Layout';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import SignInSide from './pages/SignInSide';
 import ProtectedRoute from './services/service-component/ProtectedRoute';
-import FileUploader from './pages/FileUploader';
 import Dashboard from './pages/Dashboard';
 import Calendar from './pages/Calendar';
+import Database from './pages/Database';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route element = {<ProtectedRoute />}>
           <Route path = '/' element = {<Layout/>}>
             <Route index element = {<Dashboard/>}/>
-            <Route path = '/database' element = {<FileUploader/>}/>
+            <Route path = '/database' element = {<Database/>}/>
             <Route path = '/calendar' element = {<Calendar/>}/>
           </Route>
         </Route>

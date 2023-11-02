@@ -1,22 +1,29 @@
 import * as React from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import dayjs, { Dayjs } from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
 export default function BasicDateCalendar() {
-  const [value,setValue] = React.useState<Dayjs | null> (dayjs()); //set it to now
   const date = new Date();
-  const utcOffset = date.getTimezoneOffset();
-  console.log(utcOffset);
+
+  const UTC : number = date.getTimezoneOffset();
+  const [value,setValue] = React.useState<Dayjs | null> (dayjs()); //set it to now
+
   return (
     //Basic Calendar.
-    <div>
-      <h1>{`Current Date: ${value}`}</h1>
+    <React.Fragment>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateCalendar value = {value} onChange={(newValue) => setValue(newValue)}/>
+      <StaticDatePicker orientation='landscape' value = {value} 
+      onAccept={newVal => setValue(newVal)}/>
       </LocalizationProvider>
-    </div>
+      <h2>{`${value}`}</h2>
+      <h2> TODO: Implements SelectedDateDetail and Create Event</h2>
+    </React.Fragment>
 
   );
 }

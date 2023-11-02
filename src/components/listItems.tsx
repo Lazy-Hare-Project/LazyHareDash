@@ -4,11 +4,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BackupTableIcon from '@mui/icons-material/BackupTable';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import EventIcon from '@mui/icons-material/Event';
 import { Link } from '@mui/material';
 //This is the item on the Side Bar
 //TODO Create Routing for these Item
@@ -25,15 +26,15 @@ export const mainListItems = (
     <Link href = "/database" underline='none' color='ButtonText'>
       <ListItemButton>
         <ListItemIcon>
-          <ShoppingCartIcon />
+          <BackupTableIcon />
         </ListItemIcon>
-        <ListItemText primary="Database" />
+        <ListItemText primary="Files" />
       </ListItemButton>
     </Link>
     <Link href = "/calendar" underline='none' color='ButtonText'>
       <ListItemButton>
         <ListItemIcon>
-          <PeopleIcon />
+          <EventIcon />
         </ListItemIcon>
         <ListItemText primary="Calendar" />
       </ListItemButton>
@@ -42,7 +43,7 @@ export const mainListItems = (
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Monitoring" />
+      <ListItemText primary="Cutomers" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>

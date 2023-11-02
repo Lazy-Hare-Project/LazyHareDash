@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createTheme} from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -11,6 +12,8 @@ const defaultTheme = createTheme();
 
 export default function Dashboard() {
   return (
+    <React.Fragment>
+      <h1>TODO: Implements Dynamic Data Loading for This Dash Board</h1>
         <Grid container spacing={3}>
           {/* Chart */}
           <Grid item xs={12} md={8} lg={9}>
@@ -48,5 +51,6 @@ export default function Dashboard() {
             </Paper>
           </Grid>
         </Grid>
+      </React.Fragment>
   );
 }
