@@ -7,6 +7,7 @@ import ProtectedRoute from './services/service-component/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Calendar from './pages/Calendar';
 import Database from './pages/Database';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Route>
         </Route>
         <Route path='/login' element = {<SignInSide/>} />
+        <Route path = 'signup' element = {<SignUp/>}/>
       </Routes>
     </BrowserRouter>
 
